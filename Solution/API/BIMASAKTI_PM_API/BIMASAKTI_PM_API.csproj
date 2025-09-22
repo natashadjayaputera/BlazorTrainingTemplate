@@ -10,6 +10,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Realta.BackCollectionNuGet" Version="1.0.2" />
+		<PackageReference Include="Realta.CommonCollectionNuGet" Version="1.0.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
 	</ItemGroup>
 
 	<ItemGroup>
