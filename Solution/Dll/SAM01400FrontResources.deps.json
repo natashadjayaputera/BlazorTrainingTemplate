@@ -1,0 +1,29 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.1/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.1": {},
+    ".NETStandard,Version=v2.1/": {
+      "SAM01400FrontResources/1.0.0": {
+        "runtime": {
+          "SAM01400FrontResources.dll": {}
+        },
+        "resources": {
+          "id/SAM01400FrontResources.resources.dll": {
+            "locale": "id"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SAM01400FrontResources/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

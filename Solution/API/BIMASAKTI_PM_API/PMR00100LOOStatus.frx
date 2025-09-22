@@ -1,0 +1,372 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<inherited BaseReport="BaseHeaderLandscapeCommon.frx" BaseReportAbsolutePath="D:\RealCode\RSF\BIMASAKTI_11\1.00\PROGRAM\BS Program\SOURCE\API\PM\BIMASAKTI_PM_API\Reports\BaseHeaderLandscapeCommon.frx" ScriptLanguage="CSharp" ReportInfo.Created="08/04/2023 16:21:34" ReportInfo.Modified="10/04/2024 10:53:04" ReportInfo.CreatorVersion="2023.2.21.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+    private void DataUnit_BeforePrint(object sender, EventArgs e)
+    {
+      // Ambil nilai dari CUNIT_DETAIL_ID
+      var data = Report.GetColumnValue(&quot;ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailUnit.CUNIT_DETAIL_ID&quot;) as string;
+    
+      // Ambil nilai ITOTAL_UNIT
+      var totalUnit = Report.GetColumnValue(&quot;ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailUnit.ITOTAL_UNIT&quot;) as int?;
+
+      // Jika CUNIT_DETAIL_ID adalah null atau ITOTAL_UNIT &amp;&amp; 0, maka sembunyikan band
+      (sender as BandBase).Visible = !(string.IsNullOrEmpty(data) || totalUnit == 0);
+    }
+
+    private void DataCharges_BeforePrint(object sender, EventArgs e)
+    {
+      // Ambil nilai dari CCHARGE_DETAIL_TYPE_NAME
+      var data = Report.GetColumnValue(&quot;ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailCharge.CCHARGE_DETAIL_TYPE_NAME&quot;) as string;
+          
+      // Ambil nilai ITOTAL_CHARGE
+      var totalCharge = Report.GetColumnValue(&quot;ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailCharge.ITOTAL_CHARGE&quot;) as int?;
+
+
+      // Jika CUNIT_DETAIL_ID adalah null atau ITOTAL_CHARGE adalah null atau 0, maka sembunyikan band
+      (sender as BandBase).Visible = !(string.IsNullOrEmpty(data)|| totalCharge == 0);
+    }
+    
+    private void DataDeposit_BeforePrint(object sender, EventArgs e)
+    {
+      // Ambil nilai dari CDEPOSIT_DETAIL_ID
+      var data = Report.GetColumnValue(&quot;ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailDeposit.CDEPOSIT_DETAIL_ID&quot;) as string;
+
+      // Ambil nilai ITOTAL_DEPOSIT
+      var totalDeposit = Report.GetColumnValue(&quot;ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailDeposit.ITOTAL_DEPOSIT&quot;) as int?;
+
+      // Jika CDEPOSIT_DETAIL_ID adalah null atau ITOTAL_DEPOSIT adalah null atau 0, maka sembunyikan band
+      (sender as BandBase).Visible = !(string.IsNullOrEmpty(data) || totalDeposit == 0);
+    }
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <BusinessObjectDataSource Name="ResponseDataModel" ReferenceName="ResponseDataModel" DataType="System.Collections.ArrayList" Enabled="true">
+      <Column Name="PMR00100PrintData" DataType="PMR00100Common.Report.LOOStatusReportResultDTO, PMR00100Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Column Name="title" DataType="System.String"/>
+        <Column Name="Header" DataType="PMR00100Common.Report.LOOStatusHeaderDTO, PMR00100Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Column Name="CPROPERTY" DataType="System.String"/>
+          <Column Name="CDEPT" DataType="System.String"/>
+          <Column Name="CSALESMAN" DataType="System.String"/>
+          <Column Name="CPERIOD" DataType="System.String"/>
+          <Column Name="CREPORT_NAME" DataType="System.String"/>
+        </Column>
+        <Column Name="Column" DataType="PMR00100Common.Report.LOOStatusColumnDTO, PMR00100Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Column Name="COL_PROPERTY" DataType="System.String"/>
+          <Column Name="COL_DEPT" DataType="System.String"/>
+          <Column Name="COL_SALESMAN" DataType="System.String"/>
+          <Column Name="COL_PERIOD" DataType="System.String"/>
+          <Column Name="COL_CTRANS_NAME" DataType="System.String"/>
+          <Column Name="COL_CSALESMAN_NAME" DataType="System.String"/>
+          <Column Name="COL_CREF_NO" DataType="System.String"/>
+          <Column Name="COL_CREF_DATE" DataType="System.String"/>
+          <Column Name="COL_CTENURE" DataType="System.String"/>
+          <Column Name="COL_STATUS_NAME" DataType="System.String"/>
+          <Column Name="COL_CAGREEMENT_STATUS_NAME" DataType="System.String"/>
+          <Column Name="COL_CTRANS_STATUS_NAME" DataType="System.String"/>
+          <Column Name="COL_NREVISION_COUNT" DataType="System.String"/>
+          <Column Name="COL_NTOTAL_PRICE" DataType="System.String"/>
+          <Column Name="COL_CTAX" DataType="System.String"/>
+          <Column Name="COL_CTENANT_NAME" DataType="System.String"/>
+          <Column Name="COL_CTC_MESSAGE" DataType="System.String"/>
+          <Column Name="COL_CUNIT_DETAIL_NAME" DataType="System.String"/>
+          <Column Name="COL_NUNIT_DETAIL_AREA" DataType="System.String"/>
+          <Column Name="COL_NUNIT_DETAIL_GROSS_AREA_SIZE" DataType="System.String"/>
+          <Column Name="COL_NUNIT_DETAIL_NET_AREA_SIZ" DataType="System.String"/>
+          <Column Name="COL_NUNIT_DETAIL_COMMON_AREA_SIZE" DataType="System.String"/>
+          <Column Name="COL_NUNIT_DETAIL_PRICE" DataType="System.String"/>
+          <Column Name="COL_NUNIT_TOTAL" DataType="System.String"/>
+          <Column Name="COL_CCHARGE_DETAIL_TYPE_NAME" DataType="System.String"/>
+          <Column Name="COL_CCHARGE_DETAIL_UNIT_NAME" DataType="System.String"/>
+          <Column Name="COL_CCHARGE_DETAIL_CHARGE_NAME" DataType="System.String"/>
+          <Column Name="COL_CCHARGE_DETAIL_TAX_NAME" DataType="System.String"/>
+          <Column Name="COL_CCHARGE_DETAIL_START_DATE" DataType="System.String"/>
+          <Column Name="COL_CCHARGE_DETAIL_END_DATE" DataType="System.String"/>
+          <Column Name="COL_CCHARGE_DETAIL_TENURE" DataType="System.String"/>
+          <Column Name="COL_CCHARGE_DETAIL_FEE_METHOD" DataType="System.String"/>
+          <Column Name="COL_NCHARGE_DETAIL_FEE_AMOUNT" DataType="System.String"/>
+          <Column Name="COL_NCHARGE_DETAIL_CALCULATED_FEE_AMOUNT" DataType="System.String"/>
+          <Column Name="COL_NCHARGE_DETAIL_SUBTOTAL_CALCULATED_FEE_AMOUNT" DataType="System.String"/>
+          <Column Name="COL_CDEPOSIT_DETAIL_DEPOSIT" DataType="System.String"/>
+          <Column Name="COL_CDEPOSIT_DETAIL_DATE" DataType="System.String"/>
+          <Column Name="COL_NDEPOSIT_DETAIL_AMOUNT" DataType="System.String"/>
+          <Column Name="COL_CDEPOSIT_DETAIL_DESCRIPTION" DataType="System.String"/>
+          <Column Name="COL_TOTAL_OF_AGGREMENT_BASED_ON_SM" DataType="System.String"/>
+          <Column Name="COL_GRAND_TOTAL_OF_AGGREMENT" DataType="System.String"/>
+          <Column Name="COL_REPORT_TYPENAME" DataType="System.String"/>
+        </Column>
+        <BusinessObjectDataSource Name="DataLOOStatus" DataType="System.Collections.Generic.List`1[[PMR00100Common.Report.LOOStatusDetail1DTO, PMR00100Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+          <Column Name="CTRANS_NAME" DataType="System.String"/>
+          <BusinessObjectDataSource Name="LOOStatusDetail2" DataType="System.Collections.Generic.List`1[[PMR00100Common.Report.LOOStatusDetail2DTO, PMR00100Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+            <Column Name="CSALESMAN_ID" DataType="System.String"/>
+            <Column Name="CSALESMAN_NAME" DataType="System.String"/>
+            <BusinessObjectDataSource Name="LOOStatusDetail3" DataType="System.Collections.Generic.List`1[[PMR00100Common.Report.LOOStatusDetail3DTO, PMR00100Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+              <Column Name="CREF_NO" DataType="System.String"/>
+              <Column Name="CTENURE" DataType="System.String"/>
+              <Column Name="CGLACCOUNT_NAME" DataType="System.String"/>
+              <Column Name="CAGREEMENT_STATUS_NAME" DataType="System.String"/>
+              <Column Name="CTRANS_STATUS_NAME" DataType="System.String"/>
+              <Column Name="NREVISION_COUNT" DataType="System.Decimal"/>
+              <Column Name="NTOTAL_PRICE" DataType="System.Decimal"/>
+              <Column Name="CTAX" DataType="System.String"/>
+              <Column Name="CTENANT_ID" DataType="System.String"/>
+              <Column Name="CTENANT_NAME" DataType="System.String"/>
+              <Column Name="CTENANT" DataType="System.String"/>
+              <Column Name="CTC_MESSAGE" DataType="System.String"/>
+              <BusinessObjectDataSource Name="BusinessObjectDataSource8" Alias="LOOStatusDetailUnit" DataType="System.Collections.Generic.List`1[[PMR00100Common.Report.LOOStatusDetailUnitDTO, PMR00100Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="LOOStatusDetailUnit" Enabled="true">
+                <Column Name="CUNIT_DETAIL_ID" DataType="System.String"/>
+                <Column Name="CUNIT_DETAIL_NAME" DataType="System.String"/>
+                <Column Name="CUNIT" DataType="System.String"/>
+                <Column Name="NUNIT_DETAIL_GROSS_AREA_SIZE" DataType="System.Decimal"/>
+                <Column Name="NUNIT_DETAIL_NET_AREA_SIZE" DataType="System.Decimal"/>
+                <Column Name="NUNIT_DETAIL_COMMON_AREA_SIZE" DataType="System.Decimal"/>
+                <Column Name="NUNIT_DETAIL_PRICE" DataType="System.Decimal"/>
+                <Column Name="ITOTAL_UNIT" DataType="System.Int32"/>
+              </BusinessObjectDataSource>
+              <BusinessObjectDataSource Name="BusinessObjectDataSource9" Alias="LOOStatusDetailCharge" DataType="System.Collections.Generic.List`1[[PMR00100Common.Report.LOOStatusDetailChargeDTO, PMR00100Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="LOOStatusDetailCharge" Enabled="true">
+                <Column Name="CCHARGE_DETAIL_TYPE_NAME" DataType="System.String"/>
+                <BusinessObjectDataSource Name="BusinessObjectDataSource11" Alias="LOOStatusDetailChargeUnit" DataType="System.Collections.Generic.List`1[[PMR00100Common.Report.LOOStatusDetailChargeTypeUnitDTO, PMR00100Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="LOOStatusDetailChargeUnit" Enabled="true">
+                  <Column Name="CCHARGE_DETAIL_UNIT_NAME" DataType="System.String"/>
+                  <BusinessObjectDataSource Name="LOOStatusDetailChargeTypeUnitCharge" DataType="System.Collections.Generic.List`1[[PMR00100Common.Report.LOOStatusDetailChargeTypeUnitChargeDTO, PMR00100Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+                    <Column Name="CCHARGE_DETAIL_CHARGE_NAME" DataType="System.String"/>
+                    <Column Name="CCHARGE_DETAIL_TAX_NAME" DataType="System.String"/>
+                    <Column Name="CCHARGE_DETAIL_TENURE" DataType="System.String"/>
+                    <Column Name="CCHARGE_DETAIL_FEE_METHOD" DataType="System.String"/>
+                    <Column Name="NCHARGE_DETAIL_FEE_AMOUNT" DataType="System.Decimal"/>
+                    <Column Name="NCHARGE_DETAIL_CALCULATED_FEE_AMOUNT" DataType="System.Decimal"/>
+                    <Column Name="NCHARGE_DETAIL_SUBTOTAL_CALCULATED_FEE_AMOUNT" DataType="System.Decimal"/>
+                    <Column Name="DCHARGE_DETAIL_START_DATE" DataType="System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"/>
+                    <Column Name="DCHARGE_DETAIL_END_DATE" DataType="System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"/>
+                  </BusinessObjectDataSource>
+                </BusinessObjectDataSource>
+              </BusinessObjectDataSource>
+              <BusinessObjectDataSource Name="BusinessObjectDataSource10" Alias="LOOStatusDetailDeposit" DataType="System.Collections.Generic.List`1[[PMR00100Common.Report.LOOStatusDetailDepositDTO, PMR00100Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" PropName="LOOStatusDetailDeposit" Enabled="true">
+                <Column Name="CDEPOSIT_DETAIL_ID" DataType="System.String"/>
+                <Column Name="NDEPOSIT_DETAIL_AMOUNT" DataType="System.Decimal"/>
+                <Column Name="CDEPOSIT_DETAIL_DESCRIPTION" DataType="System.String"/>
+                <Column Name="ITOTAL_DEPOSIT" DataType="System.Int32"/>
+                <Column Name="DDEPOSIT_DETAIL_DATE" DataType="System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"/>
+              </BusinessObjectDataSource>
+              <Column Name="DREF_DATE" DataType="System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"/>
+            </BusinessObjectDataSource>
+          </BusinessObjectDataSource>
+        </BusinessObjectDataSource>
+      </Column>
+      <Column Name="BaseHeaderData" DataType="BaseHeaderReportCOMMON.BaseHeaderDTO, BaseHeaderReportCOMMON, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Column Name="BLOGO_COMPANY" DataType="System.Byte[]" BindableControl="Picture"/>
+        <Column Name="CPRINT_CODE" DataType="System.String"/>
+        <Column Name="CCOMPANY_NAME" DataType="System.String"/>
+        <Column Name="CPRINT_NAME" DataType="System.String"/>
+        <Column Name="CUSER_ID" DataType="System.String"/>
+      </Column>
+      <Column Name="BaseHeaderColumn" DataType="BaseHeaderReportCOMMON.BaseHeaderColumnDTO, BaseHeaderReportCOMMON, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Column Name="Page" DataType="System.String"/>
+        <Column Name="Of" DataType="System.String"/>
+        <Column Name="Print_Date" DataType="System.String"/>
+        <Column Name="Print_By" DataType="System.String"/>
+      </Column>
+    </BusinessObjectDataSource>
+    <Total Name="LOOStatus1" TotalType="Count" Evaluator="Data1"/>
+    <Total Name="LOOStatus2" TotalType="Count" Evaluator="Data2"/>
+    <Total Name="Total_UnitGross" Expression="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailUnit.NUNIT_DETAIL_GROSS_AREA_SIZE]" Evaluator="Data7" PrintOn="DataFooter1" ResetOnReprint="true"/>
+    <Total Name="Total_UnitNet" Expression="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailUnit.NUNIT_DETAIL_NET_AREA_SIZE]" Evaluator="Data7" PrintOn="DataFooter1" ResetOnReprint="true"/>
+    <Total Name="Total_UnitCommon" Expression="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailUnit.NUNIT_DETAIL_COMMON_AREA_SIZE]" Evaluator="Data7" PrintOn="DataFooter1" ResetOnReprint="true"/>
+    <Total Name="Total_UnitPrice" Expression="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailUnit.NUNIT_DETAIL_PRICE]" Evaluator="Data7" PrintOn="DataFooter1" ResetOnReprint="true"/>
+    <Total Name="Total_CalculatedFeeAmount" Expression="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailCharge.LOOStatusDetailChargeUnit.LOOStatusDetailChargeTypeUnitCharge.NCHARGE_DETAIL_CALCULATED_FEE_AMOUNT]" Evaluator="Data15" PrintOn="DataFooter2" ResetOnReprint="true"/>
+    <Total Name="GrandTotal_Aggrement" TotalType="Count" Evaluator="Data3" PrintOn="DataFooter5" ResetOnReprint="true"/>
+    <Total Name="Total_Sales" TotalType="Count" Evaluator="Data3" PrintOn="DataFooter3" ResetOnReprint="true"/>
+    <Total Name="Total_Trans" TotalType="Count" Evaluator="Data3" PrintOn="DataFooter4" ResetOnReprint="true"/>
+  </Dictionary>
+  <inherited Name="Page1">
+    <inherited Name="PageHeader1">
+      <inherited Name="Picture1"/>
+      <inherited Name="Text33"/>
+      <inherited Name="Text40">
+        <Formats>
+          <GeneralFormat/>
+          <GeneralFormat/>
+          <GeneralFormat/>
+          <GeneralFormat/>
+        </Formats>
+      </inherited>
+      <inherited Name="Text36"/>
+      <inherited Name="Text38"/>
+      <inherited Name="Text34"/>
+      <inherited Name="Text37"/>
+      <inherited Name="Text39"/>
+      <ChildBand Name="Child1" ZOrder="-1" Top="79.16" Width="1047.06" Height="85.05">
+        <TextObject Name="Text41" Left="-28.35" Top="9.45" Width="85.05" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_PROPERTY] :" Font="Arial Unicode MS, 8pt"/>
+        <TextObject Name="Text42" Left="-28.35" Top="28.35" Width="94.5" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_DEPT] :" Font="Arial Unicode MS, 8pt"/>
+        <TextObject Name="Text43" Left="-28.35" Top="47.25" Width="85.05" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_SALESMAN] :" Font="Arial Unicode MS, 8pt"/>
+        <TextObject Name="Text44" Left="-28.35" Top="66.15" Width="85.05" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_PERIOD] :" Font="Arial Unicode MS, 8pt"/>
+        <TextObject Name="Text45" Left="70.6" Top="9.45" Width="519.75" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Header.CPROPERTY]" Font="Arial Unicode MS, 8pt"/>
+        <TextObject Name="Text46" Left="70.6" Top="28.35" Width="519.75" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Header.CDEPT]" Font="Arial Unicode MS, 8pt"/>
+        <TextObject Name="Text47" Left="70.6" Top="47.25" Width="519.75" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Header.CSALESMAN]" Font="Arial Unicode MS, 8pt"/>
+        <TextObject Name="Text48" Left="70.6" Top="66.15" Width="519.75" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Header.CPERIOD]" Font="Arial Unicode MS, 8pt"/>
+        <TextObject Name="Text161" Left="784.35" Top="9.45" Width="170.1" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_REPORT_TYPENAME] : [ResponseDataModel.PMR00100PrintData.Header.CREPORT_NAME]" VertAlign="Center" Font="Arial Unicode MS, 8pt">
+          <Formats>
+            <GeneralFormat/>
+            <GeneralFormat/>
+          </Formats>
+        </TextObject>
+      </ChildBand>
+    </inherited>
+    <ColumnHeaderBand Name="ColumnHeader1" ZOrder="-1" Top="167.76" Width="1047.06" Height="56.7">
+      <TextObject Name="Text49" Left="-28.35" Top="4.45" Width="141.75" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CTRANS_NAME]" Font="Arial Unicode MS, 8pt"/>
+      <TextObject Name="Text51" Top="32.8" Width="75.6" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CREF_NO]" VertAlign="Center" Font="Arial Unicode MS, 8pt"/>
+      <TextObject Name="Text52" Left="131.75" Top="32.8" Width="75.6" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CREF_DATE]" VertAlign="Center" Font="Arial Unicode MS, 8pt"/>
+      <TextObject Name="Text53" Left="231.7" Top="32.8" Width="66.15" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CTENURE]" VertAlign="Center" Font="Arial Unicode MS, 8pt"/>
+      <TextObject Name="Text54" Left="420.7" Top="32.8" Width="90.5" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CAGREEMENT_STATUS_NAME]" VertAlign="Center" Font="Arial Unicode MS, 8pt"/>
+      <TextObject Name="Text55" Left="507.2" Top="32.8" Width="90.5" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CTRANS_STATUS_NAME]" VertAlign="Center" Font="Arial Unicode MS, 8pt"/>
+      <TextObject Name="Text56" Left="467.95" Top="4.45" Width="66.15" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_STATUS_NAME]" Font="Arial Unicode MS, 8pt"/>
+      <LineObject Name="Line1" Left="426.7" Top="27.35" Width="144.2"/>
+      <TextObject Name="Text57" Left="585.9" Top="32.8" Width="103.95" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_NTOTAL_PRICE]" HorzAlign="Right" VertAlign="Center" Font="Arial Unicode MS, 8pt"/>
+      <TextObject Name="Text59" Left="681.4" Top="32.8" Width="66.15" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_NREVISION_COUNT]" HorzAlign="Right" VertAlign="Center" Font="Arial Unicode MS, 8pt"/>
+      <TextObject Name="Text60" Left="746.55" Top="32.8" Width="56.7" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CTENANT_NAME]" HorzAlign="Center" VertAlign="Center" Font="Arial Unicode MS, 8pt"/>
+      <TextObject Name="Text61" Left="897.75" Top="32.8" Width="141.75" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CTC_MESSAGE]" VertAlign="Center" Font="Arial Unicode MS, 8pt"/>
+      <LineObject Name="Line6" Left="-37.8" Top="56.7" Width="1123.55"/>
+      <LineObject Name="Line12" Left="-37.8" Width="1123.55"/>
+    </ColumnHeaderBand>
+    <DataBand Name="Data1" ZOrder="0" Top="228.02" Width="1047.06" Height="23.35" DataSource="DataLOOStatus">
+      <TextObject Name="Text62" Left="-28.35" Top="4.45" Width="226.8" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.CTRANS_NAME]" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+      <DataBand Name="Data2" Top="254.92" Width="1047.06" Height="19.45" DataSource="LOOStatusDetail2" KeepTogether="true" KeepDetail="true">
+        <TextObject Name="Text63" Left="-18.9" Top="0.55" Width="255.15" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_SALESMAN]: [ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.CSALESMAN_ID] - [ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.CSALESMAN_NAME]" VertAlign="Center" Font="Arial Unicode MS, 7pt">
+          <Formats>
+            <GeneralFormat/>
+            <GeneralFormat/>
+            <GeneralFormat/>
+          </Formats>
+        </TextObject>
+        <DataBand Name="Data3" Top="281.48" Width="1047.06" Height="29.18" CanGrow="true" DataSource="LOOStatusDetail3" KeepTogether="true" KeepDetail="true">
+          <TextObject Name="Text64" Top="9" Width="132.3" Height="16.45" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.CREF_NO]" AutoWidth="true" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+          <TextObject Name="Text65" Left="232.25" Top="10" Width="198.45" Height="14.45" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.CTENURE]" AutoWidth="true" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+          <TextObject Name="Text66" Left="132.3" Top="6.28" Width="99.5" Height="21.9" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.DREF_DATE]" Format="Date" Format.Format="d" AutoWidth="true" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt"/>
+          <TextObject Name="Text67" Left="424.8" Top="9.5" Width="74.6" Height="15.45" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.CAGREEMENT_STATUS_NAME]" AutoWidth="true" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+          <TextObject Name="Text68" Left="509.85" Top="9.5" Width="75.6" Height="15.45" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.CTRANS_STATUS_NAME]" AutoWidth="true" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+          <TextObject Name="Text69" Left="595.35" Top="6.28" Width="94.5" Height="21.9" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.NTOTAL_PRICE]" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.CurrencySymbol="" Format.PositivePattern="0" Format.NegativePattern="0" AutoWidth="true" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt" Trimming="EllipsisCharacter"/>
+          <TextObject Name="Text71" Left="699.3" Top="5.28" Width="47.25" Height="23.9" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.NREVISION_COUNT]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="0" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" AutoWidth="true" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt" Trimming="EllipsisCharacter"/>
+          <TextObject Name="Text72" Left="752.55" Top="9.5" Width="141.75" Height="15.45" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.CTENANT]" AutoWidth="true" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+          <TextObject Name="Text73" Left="897.75" Top="9" Width="170.1" Height="16.45" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.CTC_MESSAGE]" AutoWidth="true" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+          <DataHeaderBand Name="DataHeader4" Top="277.93" Width="1047.06" KeepWithData="true"/>
+          <DataBand Name="Data7" Top="349.47" Width="1047.06" Height="12.9" CanGrow="true" BeforePrintEvent="DataUnit_BeforePrint" DataSource="BusinessObjectDataSource8" KeepTogether="true">
+            <TextObject Name="Text82" Left="170.1" Top="-1" Width="75.6" Height="13.9" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailUnit.NUNIT_DETAIL_GROSS_AREA_SIZE]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" AutoWidth="true" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt" Trimming="EllipsisCharacter"/>
+            <TextObject Name="Text83" Left="226.8" Top="-1" Width="94.5" Height="13.9" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailUnit.NUNIT_DETAIL_NET_AREA_SIZE]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" AutoWidth="true" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt" Trimming="EllipsisCharacter"/>
+            <TextObject Name="Text84" Left="302.4" Top="-1" Width="94.5" Height="13.9" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailUnit.NUNIT_DETAIL_COMMON_AREA_SIZE]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" AutoWidth="true" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt" Trimming="EllipsisCharacter"/>
+            <TextObject Name="Text85" Left="415.8" Top="-1" Width="94.5" Height="13.9" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailUnit.NUNIT_DETAIL_PRICE]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="0" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt" Trimming="EllipsisCharacter"/>
+            <TextObject Name="Text81" Left="94.5" Top="0.22" Width="75.6" Height="11.45" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailUnit.CUNIT_DETAIL_ID]" VertAlign="Center" Font="Arial Unicode MS, 8pt"/>
+            <DataHeaderBand Name="DataHeader1" Top="314.22" Width="1047.06" Height="31.7" CanGrow="true" BeforePrintEvent="DataUnit_BeforePrint" KeepWithData="true">
+              <TextObject Name="Text79" Left="255.15" Top="1" Width="66.15" Height="10.9" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_NUNIT_DETAIL_AREA]" AutoWidth="true" HorzAlign="Center" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt"/>
+              <TextObject Name="Text74" Left="94.5" Top="7.45" Width="56.7" Height="16.9" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CUNIT_DETAIL_NAME]" AutoWidth="true" WordWrap="false" Font="Arial Unicode MS, 7pt"/>
+              <TextObject Name="Text80" Left="415.8" Top="7.45" Width="94.5" Height="16.9" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_NUNIT_DETAIL_PRICE]" AutoWidth="true" HorzAlign="Right" WordWrap="false" Font="Arial Unicode MS, 7pt"/>
+              <LineObject Name="Line3" Left="85.05" Top="1" Width="453.6" CanGrow="true"/>
+              <LineObject Name="Line4" Left="85.05" Top="28.7" Width="453.6" Height="3" CanGrow="true"/>
+              <TextObject Name="Text77" Left="255.15" Top="15.58" Width="66.15" Height="10.45" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_NUNIT_DETAIL_NET_AREA_SIZ]" AutoWidth="true" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt"/>
+              <LineObject Name="Line2" Left="179.55" Top="13.9" Width="217.35" CanGrow="true"/>
+              <TextObject Name="Text75" Left="179.55" Top="15.58" Width="66.15" Height="10.45" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_NUNIT_DETAIL_GROSS_AREA_SIZE]" AutoWidth="true" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt"/>
+              <TextObject Name="Text78" Left="330.75" Top="15.58" Width="66.15" Height="10.45" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_NUNIT_DETAIL_COMMON_AREA_SIZE]" AutoWidth="true" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt"/>
+            </DataHeaderBand>
+            <DataFooterBand Name="DataFooter1" Top="365.93" Width="1047.06" Height="19.58" CanGrow="true" BeforePrintEvent="DataUnit_BeforePrint" KeepWithData="true">
+              <TextObject Name="Text125" Left="94.5" Top="1.45" Width="65.15" Height="12.45" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_NUNIT_TOTAL]" VertAlign="Center" Font="Arial Unicode MS, 8pt, style=Bold"/>
+              <TextObject Name="Text126" Left="170.1" Top="1.45" Width="75.6" Height="12.45" Text="[Total_UnitGross]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="0" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt, style=Bold" Trimming="EllipsisCharacter"/>
+              <TextObject Name="Text127" Left="245.7" Top="0.23" Width="75.6" Height="14.9" Text="[Total_UnitNet]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="0" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt, style=Bold" Trimming="EllipsisCharacter"/>
+              <TextObject Name="Text128" Left="321.3" Top="0.23" Width="75.6" Height="14.9" Text="[Total_UnitCommon]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="0" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt, style=Bold" Trimming="EllipsisCharacter"/>
+              <TextObject Name="Text129" Left="415.8" Top="0.73" Width="94.5" Height="13.9" Text="[Total_UnitPrice]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="0" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt, style=Bold" Trimming="EllipsisCharacter"/>
+              <LineObject Name="Line14" Left="85.05" Width="453.6"/>
+            </DataFooterBand>
+          </DataBand>
+          <DataBand Name="Data9" Top="424.42" Width="1047.06" BeforePrintEvent="DataCharges_BeforePrint" DataSource="BusinessObjectDataSource9" KeepTogether="true" KeepDetail="true">
+            <DataHeaderBand Name="DataHeader2" Top="389.07" Width="1047.06" Height="31.8" BeforePrintEvent="DataCharges_BeforePrint" KeepWithData="true">
+              <TextObject Name="Text96" Left="236.25" Top="13.4" Width="56.7" Height="15.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CCHARGE_DETAIL_CHARGE_NAME]" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+              <TextObject Name="Text98" Left="737.1" Top="13.4" Width="75.6" Height="15.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CCHARGE_DETAIL_FEE_METHOD]" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+              <TextObject Name="Text100" Left="897.75" Top="16.62" Width="122.85" Height="9.45" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_NCHARGE_DETAIL_CALCULATED_FEE_AMOUNT]" HorzAlign="Right" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+              <TextObject Name="Text91" Left="94.5" Top="12.9" Width="75.6" Height="16.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CCHARGE_DETAIL_TYPE_NAME]" VertAlign="Center" Font="Arial Unicode MS, 8pt"/>
+              <TextObject Name="Text92" Left="172.1" Top="12.9" Width="37.8" Height="16.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CCHARGE_DETAIL_UNIT_NAME]" VertAlign="Center" Font="Arial Unicode MS, 8pt"/>
+              <TextObject Name="Text93" Left="332.75" Top="12.9" Width="47.25" Height="16.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CCHARGE_DETAIL_TAX_NAME]" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+              <TextObject Name="Text94" Left="387.45" Top="12.9" Width="66.15" Height="16.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CCHARGE_DETAIL_START_DATE]" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+              <TextObject Name="Text95" Left="472.5" Top="12.9" Width="66.15" Height="16.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CCHARGE_DETAIL_END_DATE]" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+              <TextObject Name="Text97" Left="576.45" Top="12.9" Width="65.15" Height="16.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CCHARGE_DETAIL_TENURE]" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+              <TextObject Name="Text99" Left="803.25" Top="12.9" Width="94.5" Height="16.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_NCHARGE_DETAIL_FEE_AMOUNT]" HorzAlign="Right" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+              <LineObject Name="Line7" Left="85.05" Top="11" Width="945"/>
+              <LineObject Name="Line8" Left="85.05" Top="31.8" Width="945"/>
+            </DataHeaderBand>
+            <DataBand Name="Data12" Top="427.98" Width="1047.06" BeforePrintEvent="DataCharges_BeforePrint" DataSource="BusinessObjectDataSource11" KeepTogether="true" KeepDetail="true">
+              <DataBand Name="Data15" Top="431.53" Width="1047.06" Height="15.12" CanGrow="true" BeforePrintEvent="DataCharges_BeforePrint" DataSource="LOOStatusDetailChargeTypeUnitCharge" KeepTogether="true" KeepDetail="true">
+                <TextObject Name="Text137" Left="330.75" Width="58.7" Height="14" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailCharge.LOOStatusDetailChargeUnit.LOOStatusDetailChargeTypeUnitCharge.CCHARGE_DETAIL_TAX_NAME]" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+                <TextObject Name="Text143" Left="926.1" Width="94.5" Height="14" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailCharge.LOOStatusDetailChargeUnit.LOOStatusDetailChargeTypeUnitCharge.NCHARGE_DETAIL_CALCULATED_FEE_AMOUNT]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" AutoWidth="true" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt" Trimming="EllipsisCharacter"/>
+                <TextObject Name="Text138" Left="387.45" Width="89.5" Height="14" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailCharge.LOOStatusDetailChargeUnit.LOOStatusDetailChargeTypeUnitCharge.DCHARGE_DETAIL_START_DATE]" Format="Date" Format.Format="d" AutoWidth="true" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+                <TextObject Name="Text139" Left="472.5" Width="89.5" Height="14" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailCharge.LOOStatusDetailChargeUnit.LOOStatusDetailChargeTypeUnitCharge.DCHARGE_DETAIL_END_DATE]" Format="Date" Format.Format="d" AutoWidth="true" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+                <TextObject Name="Text140" Left="576.45" Width="160.65" Height="14" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailCharge.LOOStatusDetailChargeUnit.LOOStatusDetailChargeTypeUnitCharge.CCHARGE_DETAIL_TENURE]" AutoWidth="true" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+                <TextObject Name="Text141" Left="737.1" Width="66.15" Height="14" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailCharge.LOOStatusDetailChargeUnit.LOOStatusDetailChargeTypeUnitCharge.CCHARGE_DETAIL_FEE_METHOD]" AutoWidth="true" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+                <TextObject Name="Text142" Left="803.25" Width="94.5" Height="14" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailCharge.LOOStatusDetailChargeUnit.LOOStatusDetailChargeTypeUnitCharge.NCHARGE_DETAIL_FEE_AMOUNT]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" AutoWidth="true" HorzAlign="Right" VertAlign="Center" WordWrap="false" Font="Arial Unicode MS, 7pt" Trimming="EllipsisCharacter"/>
+                <TextObject Name="Text134" Left="94.5" Width="94.5" Height="14" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailCharge.CCHARGE_DETAIL_TYPE_NAME]" Duplicates="Hide" AutoWidth="true" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+                <TextObject Name="Text135" Left="172.55" Width="63.7" Height="14" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailCharge.LOOStatusDetailChargeUnit.CCHARGE_DETAIL_UNIT_NAME]" Duplicates="Hide" AutoWidth="true" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+                <TextObject Name="Text136" Left="236.8" Width="90.05" Height="14" CanGrow="true" CanBreak="false" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailCharge.LOOStatusDetailChargeUnit.LOOStatusDetailChargeTypeUnitCharge.CCHARGE_DETAIL_CHARGE_NAME]" Duplicates="Hide" VertAlign="Center" Font="Arial Unicode MS, 7pt"/>
+              </DataBand>
+              <DataFooterBand Name="DataFooter2" Top="450.21" Width="1047.06" Height="15.9" BeforePrintEvent="DataCharges_BeforePrint" KeepWithData="true">
+                <TextObject Name="Text154" Left="803.25" Top="2.45" Width="85.05" Height="13.45" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_NCHARGE_DETAIL_SUBTOTAL_CALCULATED_FEE_AMOUNT]" Font="Arial Unicode MS, 7pt, style=Bold"/>
+                <TextObject Name="Text155" Left="926.1" Top="2.45" Width="94.5" Height="12.9" Text="[Total_CalculatedFeeAmount]" Format="Number" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.NegativePattern="1" HorzAlign="Right" WordWrap="false" Font="Arial Unicode MS, 7pt, style=Bold" Trimming="EllipsisCharacter"/>
+                <LineObject Name="Line22" Left="803.25" Width="226.8"/>
+              </DataFooterBand>
+            </DataBand>
+          </DataBand>
+          <DataBand Name="Data11" Top="499.02" Width="1047.06" Height="14.35" BeforePrintEvent="DataDeposit_BeforePrint" DataSource="BusinessObjectDataSource10" KeepTogether="true">
+            <TextObject Name="Text117" Left="94.5" Top="-0.55" Width="66.15" Height="12.9" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailDeposit.CDEPOSIT_DETAIL_ID]" Font="Arial Unicode MS, 8pt"/>
+            <TextObject Name="Text118" Left="160.65" Top="-0.55" Width="103.95" Height="12.9" CanGrow="true" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailDeposit.DDEPOSIT_DETAIL_DATE]" Format="Date" Format.Format="d" Font="Arial Unicode MS, 7pt"/>
+            <TextObject Name="Text119" Left="264.6" Top="-0.55" Width="94.5" Height="14.9" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailDeposit.NDEPOSIT_DETAIL_AMOUNT]" Format="Currency" Format.UseLocale="false" Format.DecimalDigits="2" Format.DecimalSeparator="." Format.GroupSeparator="," Format.CurrencySymbol="" Format.PositivePattern="0" Format.NegativePattern="0" HorzAlign="Right" WordWrap="false" Font="Arial Unicode MS, 7pt" Trimming="EllipsisCharacter"/>
+            <TextObject Name="Text120" Left="368.55" Top="-0.55" Width="283.5" Height="12.9" CanGrow="true" Text="[ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.LOOStatusDetail3.LOOStatusDetailDeposit.CDEPOSIT_DETAIL_DESCRIPTION]" Font="Arial Unicode MS, 7pt"/>
+            <DataHeaderBand Name="DataHeader3" Top="469.66" Width="1047.06" Height="25.8" BeforePrintEvent="DataDeposit_BeforePrint" KeepWithData="true">
+              <TextObject Name="Text114" Left="160.65" Top="10" Width="56.7" Height="12.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CDEPOSIT_DETAIL_DATE]" Font="Arial Unicode MS, 7pt"/>
+              <TextObject Name="Text113" Left="94.5" Top="10" Width="56.7" Height="12.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CDEPOSIT_DETAIL_DEPOSIT]" Font="Arial Unicode MS, 8pt"/>
+              <TextObject Name="Text115" Left="302.4" Top="10" Width="56.7" Height="12.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_NDEPOSIT_DETAIL_AMOUNT]" HorzAlign="Right" Font="Arial Unicode MS, 7pt"/>
+              <TextObject Name="Text116" Left="368.55" Top="10" Width="189" Height="12.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_CDEPOSIT_DETAIL_DESCRIPTION]" Font="Arial Unicode MS, 7pt"/>
+              <LineObject Name="Line10" Left="85.05" Top="9.45" Width="567"/>
+              <LineObject Name="Line11" Left="85.05" Top="23.8" Width="567"/>
+            </DataHeaderBand>
+          </DataBand>
+          <DataFooterBand Name="DataFooter3" Top="516.92" Width="1047.06" Height="24.35">
+            <LineObject Name="Line18" Left="-37.8" Top="2.45" Width="1121.55"/>
+            <TextObject Name="Text146" Left="491.4" Top="5.45" Width="472.5" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_TOTAL_OF_AGGREMENT_BASED_ON_SM] [ResponseDataModel.PMR00100PrintData.DataLOOStatus.LOOStatusDetail2.CSALESMAN_ID] :" HorzAlign="Right" VertAlign="Center" Font="Arial Unicode MS, 7pt, style=Bold">
+              <Formats>
+                <GeneralFormat/>
+                <GeneralFormat/>
+              </Formats>
+            </TextObject>
+            <TextObject Name="Text158" Left="973.35" Top="5.45" Width="94.5" Height="18.9" Text="[Total_Sales]" Font="Arial Unicode MS, 7pt, style=Bold"/>
+          </DataFooterBand>
+        </DataBand>
+        <DataFooterBand Name="DataFooter4" Top="544.83" Width="1047.06" Height="21.9">
+          <LineObject Name="Line19" Left="-37.8" Width="1121.55"/>
+          <TextObject Name="Text148" Left="491.4" Top="3" Width="472.5" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_TOTAL_OF_AGGREMENT_BASED_ON_SM] [ResponseDataModel.PMR00100PrintData.DataLOOStatus.CTRANS_NAME] :" HorzAlign="Right" VertAlign="Center" Font="Arial Unicode MS, 7pt, style=Bold">
+            <Formats>
+              <GeneralFormat/>
+              <GeneralFormat/>
+            </Formats>
+          </TextObject>
+          <TextObject Name="Text159" Left="973.35" Top="3" Width="94.5" Height="18.9" Text="[Total_Trans]" VertAlign="Center" Font="Arial Unicode MS, 7pt, style=Bold"/>
+        </DataFooterBand>
+      </DataBand>
+      <DataFooterBand Name="DataFooter5" Top="570.29" Width="1047.06" Height="22.35">
+        <TextObject Name="Text157" Left="973.35" Top="3.45" Width="94.5" Height="18.9" Text="[GrandTotal_Aggrement]" VertAlign="Center" Font="Arial Unicode MS, 7pt, style=Bold"/>
+        <TextObject Name="Text160" Left="491.4" Top="3.45" Width="472.5" Height="18.9" Text="[ResponseDataModel.PMR00100PrintData.Column.COL_GRAND_TOTAL_OF_AGGREMENT] :" HorzAlign="Right" VertAlign="Center" Font="Arial Unicode MS, 7pt, style=Bold"/>
+        <LineObject Name="Line23" Left="-37.8" Width="1121.55"/>
+      </DataFooterBand>
+    </DataBand>
+  </inherited>
+</inherited>

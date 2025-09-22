@@ -1,0 +1,13 @@
+8001 -- Error process, please contact your administrator!
+8002 -- Duplicate Record found!
+8003 -- Auto Close CARE is empty!
+8004 -- Auto Close CARE cannot be negative!
+8005 -- Auto Generate CARE Maintenance is empty!
+8006 -- Auto Generate CARE Maintenance cannot be negative!
+8007 -- Notification Email for CS is not valid, separate email using (;)!
+8008 -- Notification Email for Finance is not valid, separate email using (;)!			
+8009 -- CARE Invoice Tax ID is empty!							
+8010 -- CARE Invoice Tax ID is not found!							
+8011 -- CARE Invoice Term of Payment is empty!							
+8012 -- CARE Invoice Term of Payment is not found!
+8013 -- CARE Ticket Number sequence cannot be the same!									

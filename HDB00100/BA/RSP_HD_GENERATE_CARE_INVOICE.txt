@@ -1,0 +1,11 @@
+{EMPTY_TICKET_NO}		-- Ticket No is empty!
+{INVALID_TICKET_NO}		-- Ticket No is not found!
+{EMPTY_DEPT_CODE}		-- No Dept Code found in one or more invoice group!
+{NOT_INCREMENTED}		-- Transcode 910020 or 910025 does not have increment document numbering!
+{EMPTY_TAX_ID}			-- Tax ID in Help Desk System Param (HDM00100) is not set for current property!
+{EMPTY_PAY_TERM_CODE}		-- Pay Term Code in Help Desk System Param (HDM00100) is not set for current property!
+{EMPTY_CUR_RATETYPE_CODE}	-- Currency Rate Type in PM System Param (PMM00100) is not set for current property!
+{EMPTY_TAX_RATETYPE_CODE}	-- Tax Rate Type in PM System Param (PMM00100) is not set for current property!
+{EMPTY_PROPERTY_CURRENCY_CODE}	-- Currency Code in Property Profile (GSM02500) is not set for current property!
+{EMPTY_LOCAL_CURRENCY_CODE}	-- Local Currency Code in Company Parameter (GSM00300) is not set for current property!
+{EMPTY_BASE_CURRENCY_CODE}	-- Base Currency Code in Company Parameter (GSM00300) is not set for current property!

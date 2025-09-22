@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<inherited BaseReport="BaseHeaderLandscapeCommon.frx" BaseReportAbsolutePath="D:\RealCode\RSF\BIMASAKTI_11\1.00\PROGRAM\BS Program\SOURCE\API\PM\BIMASAKTI_PM_API\Reports\BaseHeaderLandscapeCommon.frx" ScriptLanguage="CSharp" ReportInfo.Created="08/04/2023 16:21:34" ReportInfo.Modified="10/28/2024 15:07:37" ReportInfo.CreatorVersion="2023.2.21.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="ResponseDataModel" ReferenceName="ResponseDataModel" DataType="System.Collections.ArrayList" Enabled="true">
+      <Column Name="BLOGO_COMPANY" DataType="System.String"/>
+      <Column Name="CPRINT_CODE" DataType="System.String"/>
+      <Column Name="CCOMPANY_NAME" DataType="System.String"/>
+      <Column Name="CPRINT_NAME" DataType="System.String"/>
+      <Column Name="CUSER_LOGIN_ID" DataType="System.String"/>
+      <Column Name="CenterData" DataType="PMR00700COMMON.DTO.Report_DTO.PMR00700PrintResultDTO, PMR00700COMMON, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Column Name="Title" DataType="System.String"/>
+        <Column Name="Header" DataType="System.String"/>
+        <Column Name="Column" DataType="PMR00700COMMON.DTO.Report_DTO.PMR00700PrintColoumnDTO, PMR00700COMMON, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Column Name="Property" DataType="System.String"/>
+          <Column Name="Department" DataType="System.String"/>
+          <Column Name="Period" DataType="System.String"/>
+          <Column Name="Transaction" DataType="System.String"/>
+          <Column Name="ReferenceNo" DataType="System.String"/>
+          <Column Name="TransactionName" DataType="System.String"/>
+          <Column Name="ReferenceDate" DataType="System.String"/>
+          <Column Name="Tenant" DataType="System.String"/>
+          <Column Name="Unit" DataType="System.String"/>
+          <Column Name="UnitCharges" DataType="System.String"/>
+          <Column Name="StartDate" DataType="System.String"/>
+          <Column Name="EndDate" DataType="System.String"/>
+          <Column Name="Seq" DataType="System.String"/>
+          <Column Name="Description" DataType="System.String"/>
+          <Column Name="Revenue" DataType="System.String"/>
+          <Column Name="SalesAmount" DataType="System.String"/>
+          <Column Name="Invoiced" DataType="System.String"/>
+          <Column Name="Reference" DataType="System.String"/>
+          <Column Name="Date" DataType="System.String"/>
+          <Column Name="Start" DataType="System.String"/>
+          <Column Name="End" DataType="System.String"/>
+          <Column Name="MinimumCharges" DataType="System.String"/>
+          <Column Name="RevenueSharing" DataType="System.String"/>
+          <Column Name="RevenuSharing" DataType="System.String"/>
+          <Column Name="Amount" DataType="System.String"/>
+          <Column Name="Sales" DataType="System.String"/>
+        </Column>
+        <Column Name="HeaderData" DataType="PMR00700COMMON.DTO.Report_DTO.PMR00700PrintParameterDTO, PMR00700COMMON, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Column Name="CCOMPANY_ID" DataType="System.String"/>
+          <Column Name="CPROPERTY_ID" DataType="System.String"/>
+          <Column Name="CFROM_DEPARTMENT_ID" DataType="System.String"/>
+          <Column Name="CTO_DEPARTMENT_ID" DataType="System.String"/>
+          <Column Name="CFROM_PERIOD" DataType="System.String"/>
+          <Column Name="CTO_PERIOD" DataType="System.String"/>
+          <Column Name="CLANG_ID" DataType="System.String"/>
+          <Column Name="CPROPERTY_NAME" DataType="System.String"/>
+          <Column Name="CFROM_DEPARTMENT_NAME" DataType="System.String"/>
+          <Column Name="CTO_DEPARTMENT_NAME" DataType="System.String"/>
+          <Column Name="MonthNameFrom" DataType="System.String"/>
+          <Column Name="MonthNameTo" DataType="System.String"/>
+          <Column Name="CFROM_PERIOD_ORI" DataType="System.String"/>
+          <Column Name="CTO_PERIOD_ORI" DataType="System.String"/>
+          <Column Name="CUSER_ID" DataType="System.String"/>
+          <Column Name="CREPORT_CULTURE" DataType="System.String"/>
+          <Column Name="LIS_PRINT" DataType="System.Boolean" BindableControl="CheckBox"/>
+          <Column Name="CREPORT_FILETYPE" DataType="System.String"/>
+          <Column Name="CREPORT_FILENAME" DataType="System.String"/>
+          <Column Name="MonthYearName" DataType="System.String"/>
+          <Column Name="DepartmentIdName" DataType="System.String"/>
+        </Column>
+        <BusinessObjectDataSource Name="Data" DataType="System.Collections.Generic.List`1[[PMR00700COMMON.DTO.Report_DTO.PMR00700PrintHeaderDTO, PMR00700COMMON, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+          <Column Name="CTRANS_NAME" DataType="System.String"/>
+          <BusinessObjectDataSource Name="PMR00700DeptData" DataType="System.Collections.Generic.List`1[[PMR00700COMMON.DTO.Report_DTO.PMR00700DeptDTO, PMR00700COMMON, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+            <Column Name="CDEPT_CODE" DataType="System.String"/>
+            <Column Name="CDEPT_NAME" DataType="System.String"/>
+            <BusinessObjectDataSource Name="PMR00700RefNoData" DataType="System.Collections.Generic.List`1[[PMR00700COMMON.DTO.Report_DTO.PMR00700RefNoDTO, PMR00700COMMON, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+              <Column Name="CREF_NO" DataType="System.String"/>
+              <Column Name="CREF_DATE" DataType="System.String"/>
+              <Column Name="CTENANT_ID" DataType="System.String"/>
+              <Column Name="CTENANT_NAME" DataType="System.String"/>
+              <Column Name="CUNIT_ID" DataType="System.String"/>
+              <Column Name="CUNIT_NAME" DataType="System.String"/>
+              <Column Name="CCHARGES_NAME" DataType="System.String"/>
+              <Column Name="CSTART_DATE" DataType="System.String"/>
+              <Column Name="CEND_DATE" DataType="System.String"/>
+              <Column Name="CSEQ_NO" DataType="System.String"/>
+              <Column Name="CDESCRIPTION" DataType="System.String"/>
+              <Column Name="NREVENUE_SHARING_PERCENTAGE" DataType="System.Decimal"/>
+              <Column Name="NSALES_AMOUNT" DataType="System.Decimal"/>
+              <Column Name="NMINIMUM_RENT_AMOUNT" DataType="System.Decimal"/>
+              <Column Name="NREVENUE_SHARING_AMOUNT" DataType="System.Decimal"/>
+              <Column Name="LINVOICED" DataType="System.Boolean" BindableControl="CheckBox"/>
+              <Column Name="InvoideStatus" DataType="System.String"/>
+              <Column Name="CREF_DATE_DISPLAY" DataType="System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"/>
+              <Column Name="CSTART_DATE_DISPLAY" DataType="System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"/>
+              <Column Name="CEND_DATE_DISPLAY" DataType="System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"/>
+            </BusinessObjectDataSource>
+          </BusinessObjectDataSource>
+        </BusinessObjectDataSource>
+      </Column>
+      <Column Name="BaseHeaderData" DataType="BaseHeaderReportCOMMON.BaseHeaderDTO, BaseHeaderReportCOMMON, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Column Name="BLOGO_COMPANY" DataType="System.Byte[]" BindableControl="Picture"/>
+        <Column Name="CPRINT_CODE" DataType="System.String"/>
+        <Column Name="CCOMPANY_NAME" DataType="System.String"/>
+        <Column Name="CPRINT_NAME" DataType="System.String"/>
+        <Column Name="CUSER_ID" DataType="System.String"/>
+      </Column>
+      <Column Name="BaseHeaderColumn" DataType="BaseHeaderReportCOMMON.BaseHeaderColumnDTO, BaseHeaderReportCOMMON, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Column Name="Page" DataType="System.String"/>
+        <Column Name="Of" DataType="System.String"/>
+        <Column Name="Print_Date" DataType="System.String"/>
+        <Column Name="Print_By" DataType="System.String"/>
+      </Column>
+    </BusinessObjectDataSource>
+  </Dictionary>
+  <inherited Name="Page1">
+    <inherited Name="PageHeader1">
+      <inherited Name="Picture1"/>
+      <inherited Name="Text33"/>
+      <inherited Name="Text40">
+        <Formats>
+          <GeneralFormat/>
+          <GeneralFormat/>
+          <GeneralFormat/>
+          <GeneralFormat/>
+        </Formats>
+      </inherited>
+      <inherited Name="Text36"/>
+      <inherited Name="Text38"/>
+      <inherited Name="Text34"/>
+      <inherited Name="Text37"/>
+      <inherited Name="Text39"/>
+      <ChildBand Name="Child1" ZOrder="-1" Top="78.27" Width="1047.06" Height="85.05" CanGrow="true" CanShrink="true">
+        <inherited Name="Text41" Width="85.05" Text="[ResponseDataModel.CenterData.Column.Property] :"/>
+        <TextObject Name="Text42" Top="28.35" Width="85.05" Height="18.9" Text="[ResponseDataModel.CenterData.Column.Department] :&#13;&#10;" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text43" Top="56.7" Width="85.05" Height="18.9" Text="[ResponseDataModel.CenterData.Column.Period] :" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text44" Left="103.95" Width="359.1" Height="18.9" Text="[ResponseDataModel.CenterData.HeaderData.CPROPERTY_ID] - [ResponseDataModel.CenterData.HeaderData.CPROPERTY_NAME]" Font="Arial Unicode MS, 7pt">
+          <Formats>
+            <GeneralFormat/>
+            <GeneralFormat/>
+          </Formats>
+        </TextObject>
+        <TextObject Name="Text45" Left="103.95" Top="28.35" Width="359.1" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.HeaderData.DepartmentIdName]" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text46" Left="103.95" Top="56.7" Width="359.1" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.HeaderData.MonthYearName]" Font="Arial Unicode MS, 7pt"/>
+        <LineObject Name="Line3" Left="-37.8" Top="85.05" Width="1124.55"/>
+      </ChildBand>
+    </inherited>
+    <DataBand Name="Data1" ZOrder="0" Top="234.8" Width="1047.06" Height="28.35" CanGrow="true" CanShrink="true" DataSource="Data" KeepTogether="true" KeepDetail="true">
+      <TextObject Name="Text59" Left="-28.35" Top="9.45" Width="359.1" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.Data.CTRANS_NAME]" Font="Arial Unicode MS, 7pt, style=Bold"/>
+      <DataHeaderBand Name="DataHeader1" Top="165.98" Width="1047.06" Height="66.15" CanGrow="true" CanShrink="true" KeepWithData="true" RepeatOnEveryPage="true">
+        <TextObject Name="Text48" Left="-18.9" Top="18.9" Width="94.5" Height="18.9" Text="[ResponseDataModel.CenterData.Column.Department]" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text49" Left="-9.45" Top="37.8" Width="85.05" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.Column.ReferenceNo]" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text50" Left="103.95" Top="37.8" Width="66.15" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.Column.ReferenceDate]" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text51" Left="179.55" Top="37.8" Width="56.7" Height="18.9" Text="[ResponseDataModel.CenterData.Column.Tenant]" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text52" Left="283.5" Top="37.8" Width="47.25" Height="18.9" Text="[ResponseDataModel.CenterData.Column.Unit]" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text53" Left="359.1" Top="37.8" Width="75.6" Height="18.9" Text="[ResponseDataModel.CenterData.Column.UnitCharges]" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text54" Left="481.95" Top="9.45" Width="56.7" Height="18.9" Text="[ResponseDataModel.CenterData.Column.Date]" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text55" Left="434.7" Top="37.8" Width="56.7" Height="18.9" Text="[ResponseDataModel.CenterData.Column.Start]" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text56" Left="510.3" Top="37.8" Width="66.15" Height="18.9" Text="[ResponseDataModel.CenterData.Column.End]" Font="Arial Unicode MS, 7pt"/>
+        <LineObject Name="Line1" Left="444.15" Top="28.35" Width="103.95"/>
+        <TextObject Name="Text57" Left="585.9" Top="37.8" Width="37.8" Height="18.9" Text="[ResponseDataModel.CenterData.Column.Seq]" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text58" Left="623.7" Top="37.8" Width="75.6" Height="18.9" Text="[ResponseDataModel.CenterData.Column.Description]" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text64" Left="746.55" Top="37.8" Width="66.15" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.Column.RevenuSharing]" HorzAlign="Right" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text65" Left="878.85" Top="9.45" Width="94.5" Height="18.9" Text="[ResponseDataModel.CenterData.Column.Amount]" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text66" Left="812.7" Top="37.8" Width="75.6" Height="18.9" Text="[ResponseDataModel.CenterData.Column.Sales]" HorzAlign="Right" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text67" Left="888.3" Top="37.8" Width="75.6" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.Column.MinimumCharges]" HorzAlign="Right" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text68" Left="963.9" Top="37.8" Width="66.15" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.Column.RevenueSharing]" HorzAlign="Right" Font="Arial Unicode MS, 7pt"/>
+        <TextObject Name="Text69" Left="1039.5" Top="37.8" Width="66.15" Height="18.9" Text="[ResponseDataModel.CenterData.Column.Invoiced]" Font="Arial Unicode MS, 7pt"/>
+        <LineObject Name="Line2" Left="822.15" Top="28.35" Width="207.9"/>
+        <LineObject Name="Line4" Left="-37.8" Top="66.15" Width="1124.55"/>
+        <TextObject Name="Text47" Left="-28.35" Width="113.4" Height="18.9" Text="[ResponseDataModel.CenterData.Column.TransactionName]" Font="Arial Unicode MS, 7pt"/>
+      </DataHeaderBand>
+      <DataBand Name="Data2" Top="265.82" Width="1047.06" Height="18.9" CanGrow="true" CanShrink="true" DataSource="PMR00700DeptData" KeepTogether="true" KeepDetail="true">
+        <TextObject Name="Text60" Left="-18.9" Width="236.25" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.CDEPT_CODE] - [ResponseDataModel.CenterData.Data.PMR00700DeptData.CDEPT_NAME]" Font="Arial Unicode MS, 7pt">
+          <Formats>
+            <GeneralFormat/>
+            <GeneralFormat/>
+          </Formats>
+        </TextObject>
+        <DataBand Name="Data3" Top="287.38" Width="1047.06" Height="18.9" CanGrow="true" CanShrink="true" DataSource="PMR00700RefNoData" KeepTogether="true" KeepDetail="true">
+          <TextObject Name="Text61" Left="-9.45" Width="113.4" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.CREF_NO]" Duplicates="Hide" Font="Arial Unicode MS, 6.3pt"/>
+          <TextObject Name="Text62" Left="103.95" Width="75.6" Height="18.9" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.CREF_DATE_DISPLAY]" Duplicates="Hide" Format="Date" Format.Format="d" Font="Arial Unicode MS, 6.3pt"/>
+          <TextObject Name="Text63" Left="585.9" Width="37.8" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.CSEQ_NO]" Font="Arial Unicode MS, 6.3pt"/>
+          <TextObject Name="Text70" Left="179.55" Width="103.95" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.CTENANT_ID] - [ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.CTENANT_NAME]" Duplicates="Hide" Font="Arial Unicode MS, 6.3pt">
+            <Formats>
+              <GeneralFormat/>
+              <GeneralFormat/>
+            </Formats>
+          </TextObject>
+          <TextObject Name="Text71" Left="283.5" Width="75.6" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.CUNIT_ID] - [ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.CUNIT_NAME]" Duplicates="Hide" Font="Arial Unicode MS, 6.3pt">
+            <Formats>
+              <GeneralFormat/>
+              <GeneralFormat/>
+            </Formats>
+          </TextObject>
+          <TextObject Name="Text72" Left="359.1" Width="75.6" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.CCHARGES_NAME]" Duplicates="Hide" Font="Arial Unicode MS, 6.3pt"/>
+          <TextObject Name="Text73" Left="434.7" Width="75.6" Height="18.9" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.CSTART_DATE_DISPLAY]" Duplicates="Hide" Format="Date" Format.Format="d" Font="Arial Unicode MS, 6.3pt"/>
+          <TextObject Name="Text74" Left="510.3" Width="75.6" Height="18.9" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.CEND_DATE_DISPLAY]" Duplicates="Hide" Format="Date" Format.Format="d" Font="Arial Unicode MS, 6.3pt"/>
+          <TextObject Name="Text75" Left="623.7" Width="132.3" Height="18.9" CanGrow="true" CanShrink="true" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.CDESCRIPTION]" Font="Arial Unicode MS, 6.3pt"/>
+          <TextObject Name="Text76" Left="756" Width="56.7" Height="18.9" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.NREVENUE_SHARING_PERCENTAGE]%" Format="Number" Format.UseLocale="true" Format.DecimalDigits="0" HorzAlign="Right" WordWrap="false" Font="Arial Unicode MS, 6.3pt" Trimming="EllipsisCharacter"/>
+          <TextObject Name="Text77" Left="812.7" Width="75.6" Height="18.9" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.NSALES_AMOUNT]" Format="Number" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial Unicode MS, 6.3pt" Trimming="EllipsisCharacter"/>
+          <TextObject Name="Text79" Left="963.9" Width="66.15" Height="18.9" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.NREVENUE_SHARING_AMOUNT]" Format="Number" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial Unicode MS, 6.3pt" Trimming="EllipsisCharacter"/>
+          <TextObject Name="Text78" Left="888.3" Width="75.6" Height="18.9" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.NMINIMUM_RENT_AMOUNT]" Format="Number" Format.UseLocale="true" Format.DecimalDigits="2" HorzAlign="Right" WordWrap="false" Font="Arial Unicode MS, 6.3pt" Trimming="EllipsisCharacter"/>
+          <TextObject Name="Text80" Left="1039.5" Width="47.25" Height="18.9" Text="[ResponseDataModel.CenterData.Data.PMR00700DeptData.PMR00700RefNoData.InvoideStatus]" Font="Arial Unicode MS, 6.3pt"/>
+        </DataBand>
+      </DataBand>
+    </DataBand>
+  </inherited>
+</inherited>

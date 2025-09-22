@@ -1,0 +1,82 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>disable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>BIMASAKTI_GS_API</RootNamespace>
+		<AssemblyName>BIMASAKTI_GS_API</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Realta.BackCollectionNuGet" Version="1.0.2" />
+		<PackageReference Include="Realta.CommonCollectionNuGet" Version="1.0.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<Reference Include="Lookup_GSSERVICES">
+		  <HintPath>..\..\Lookup\Lookup_GSSERVICES\Lookup_GSSERVICES.dll</HintPath>
+		</Reference>
+		<Reference Include="R_ReportServerClient">
+			<HintPath>..\..\Dll Back\R_ReportServerClient.dll</HintPath>
+		</Reference>
+		<Reference Include="R_ReportServerCommon">
+			<HintPath>..\..\Dll Back\R_ReportServerCommon.dll</HintPath>
+		</Reference>
+		<Reference Include="R_APIBackEnd">
+			<HintPath>..\..\Dll Back\R_APIBackEnd.dll</HintPath>
+		</Reference>
+		<Reference Include="R_APICommon">
+			<HintPath>..\..\Dll Back\R_APICommon.dll</HintPath>
+		</Reference>
+		<Reference Include="R_APIStartUp">
+			<HintPath>..\..\Dll Back\R_APIStartUp.dll</HintPath>
+		</Reference>
+		<Reference Include="R_CrossPlatformSecurity">
+			<HintPath>..\..\Dll Back\R_CrossPlatformSecurity.dll</HintPath>
+		</Reference>
+		<Reference Include="R_HelperController">
+			<HintPath>..\..\Dll Back\R_HelperController.dll</HintPath>
+		</Reference>
+
+		<Reference Include="R_SecurityPolicyModel">
+			<HintPath>..\..\Dll Menu\R_SecurityPolicyModel.dll</HintPath>
+		</Reference>
+		<Reference Include="BlazorClientHelper">
+			<HintPath>..\..\Dll Menu\BlazorClientHelper.dll</HintPath>
+		</Reference>
+		<Reference Include="BlazorMenuModel">
+			<HintPath>..\..\Dll Menu\BlazorMenuModel.dll</HintPath>
+		</Reference>
+
+		<Reference Include="R_SecurityPolicyBack">
+			<HintPath>..\..\Dll Menu Back\R_SecurityPolicyBack.dll</HintPath>
+		</Reference>
+		<Reference Include="R_SecurityPolicyCommon">
+			<HintPath>..\..\Dll Menu Back\R_SecurityPolicyCommon.dll</HintPath>
+		</Reference>
+		<Reference Include="R_SecurityPolicyService">
+			<HintPath>..\..\Dll Menu Back\R_SecurityPolicyService.dll</HintPath>
+		</Reference>
+		<Reference Include="R_SecurityTokenBack">
+			<HintPath>..\..\Dll Menu Back\R_SecurityTokenBack.dll</HintPath>
+		</Reference>
+		<Reference Include="R_SecurityTokenCommon">
+			<HintPath>..\..\Dll Menu Back\R_SecurityTokenCommon.dll</HintPath>
+		</Reference>
+		<Reference Include="BackExtension">
+			<HintPath>..\..\Dll Menu Back\BackExtension.dll</HintPath>
+		</Reference>
+		<Reference Include="BlazorMenuBack">
+			<HintPath>..\..\Dll Menu Back\BlazorMenuBack.dll</HintPath>
+		</Reference>
+		<Reference Include="BlazorMenuCommon">
+			<HintPath>..\..\Dll Menu Back\BlazorMenuCommon.dll</HintPath>
+		</Reference>
+		<Reference Include="BlazorMenuService">
+			<HintPath>..\..\Dll Menu Back\BlazorMenuService.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+</Project>
