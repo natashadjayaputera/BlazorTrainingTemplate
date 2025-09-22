@@ -1,0 +1,10 @@
+# Ignore build output folders
+**/bin/
+**/obj/
+
+# Ignore NuGet packages
+**/packages/
+
+# Ignore NuGet configuration
+NuGet.Config
+**/NuGet.Config
